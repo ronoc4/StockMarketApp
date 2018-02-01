@@ -13,6 +13,12 @@
   <h2>Welcome, here are the latest updates on your stock picks.</h2>
   <br>
 
+  <h1>Enter a new stock to track</h1>
+  <form>
+    <div class="form-group">
+      <input class="form-control" type="text" id="stockSymbol" [(ngModel)]="stock.name" name="stockSymbol" placeholder="Enter a stock name">
+    </div>
+  </form>
   <div class="row-fluid">
     <div class="widget-box">
       <div class="widget-content nopadding">
@@ -29,13 +35,33 @@
           </thead>
           <tbody>
           <!-- loop through all stock price data, and list them in a row, binding the trending trigger to the value of the stock's trend property -->
+          <tr class="gradeX" [@trending]="stock.trend">
+            <td>
+              {{ stock.name }}
+            </td>
+            <td>
+              {{ stock.price}}
+            </td>
+            <td>
+              {{ stock.price}}
+            </td>
+            <td>
+              {{ stock.quantity }}
+            </td>
+            <td>
+              {{ stock.price * stock.quantity }}
+            </td>
+            <td>
+              {{ stock.trend }}
+            </td>
+          </tr>
           <tr class="gradeX" *ngFor="let stock of stockPrices" [@trending]="stock.trend">
-            <td>{{stock.symbol}}</td>
-            <td>USD {{stock.price}}</td>
-            <td>{{stock.bought_price}}</td>
-            <td class="center">{{stock.quantity}}</td>
-            <td>{{stock.price * stock.quantity}}</td>
-            <td>{{stock.trend}}</td>
+            <td>{{ stock.symbol }}</td>
+            <td>USD {{ stock.price }}</td>
+            <td>{{ stock.bought_price }}</td>
+            <td class="center">{{ stock.quantity }}</td>
+            <td>{{ stock.price * stock.quantity }}</td>
+            <td>{{ stock.trend }}</td>
           </tr>
           </tbody>
         </table>

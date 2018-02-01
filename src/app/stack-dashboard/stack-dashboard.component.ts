@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TRENDING} from '../animations/movable.animation';
 import {StockService} from '../services/stock.service';
+import {Stocks} from './stocks';
 
 @Component({
   selector: 'app-stack-dashboard',
@@ -12,6 +13,13 @@ import {StockService} from '../services/stock.service';
 
 export class StackDashboardComponent implements OnInit {
   public title = 'Stock Dashboard';
+
+  stock: Stocks = {
+    name: 'ANTM',
+    price: 243.56,
+    quantity: 1,
+    trend: 'UP'
+  };
 
   stockPrices = [];
   stockService: StockService;
